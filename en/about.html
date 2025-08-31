@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Estrypt</title>
+    <link rel="stylesheet" href="../navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* Story Section */
+        .story-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .story-section h2 {
+            color: #142850;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #142850;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+            text-align: left;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            width: 45%;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #142850;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        /* Mission Section */
+        .mission-section {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .mission-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .mission-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .mission-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .team-section h2 {
+            color: #142850;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .profile-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 700px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .profile-name {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .profile-title {
+            color: #142850;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Values Section */
+        .values-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: #142850;
+            margin-bottom: 15px;
+        }
+        
+        /* Advisors Section */
+        .advisors-section {
+            background: #f8f9fa;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .advisor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .advisor-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #142850;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-item {
+                justify-content: flex-start !important;
+                text-align: left !important;
+            }
+            
+            .timeline-date {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Estrypt</a>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="demo.html">Demo</a></li>
+                <li><a href="applications.html">Applications</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="lang-switcher">
+                    <button class="lang-btn active">EN</button>
+                    <button class="lang-btn" onclick="window.location.href='../about.html'">JP</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <h1>Our Story</h1>
+        <p>The challenge of a researcher returning to mathematics after 45 years</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Story Section -->
+        <section class="story-section">
+            <h2>Journey to Discovery</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Return to Mathematics</h3>
+                        <p>After majoring in mathematics and studying under Edwin Moise, followed by a 45-year hiatus, I returned to the world of mathematics at age 62. A new chapter of life began.</p>
+                    </div>
+                    <div class="timeline-date">2023</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Encounter with Erdős-Straus</h3>
+                        <p>Through Carl Pomerance's papers, I encountered this 70-year unsolved problem. I was captivated by the profound mystery hidden in this simple equation.</p>
+                    </div>
+                    <div class="timeline-date">Jan 2024</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Pattern Discovery</h3>
+                        <p>During extensive computational experiments, I discovered a correlation between the leading digit of n and the value of A. This moment changed everything.</p>
+                    </div>
+                    <div class="timeline-date">Jul 2024</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Birth of FormulaDigits2</h3>
+                        <p>The pattern-based algorithm was completed. Finding solutions in 0.0001 seconds even for numbers exceeding 10^100. A new page in mathematical history was written.</p>
+                    </div>
+                    <div class="timeline-date">Aug 2024</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <h2>Our Mission</h2>
+            <p>Demonstrating the beauty of mathematics to the world and contributing to society through technological innovation</p>
+            
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">🎯</div>
+                    <h3>Pure Pursuit</h3>
+                    <p>Pursuing the essential beauty and truth of mathematics, enriching humanity's intellectual heritage.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🌍</div>
+                    <h3>Giving Back to Society</h3>
+                    <p>Transforming research results into practical technology, contributing to a better world.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🤝</div>
+                    <h3>Knowledge Sharing</h3>
+                    <p>Sharing discoveries with researchers worldwide in the spirit of open science.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2>Founder</h2>
+            
+            <div class="profile-card">
+                <div class="profile-img">👨‍🔬</div>
+                <h3 class="profile-name">Yuichi Suzuki</h3>
+                <p class="profile-title">Founder & Chief Scientist</p>
+                <p>Former university faculty member. Studied mathematics fundamentals under Edwin Moise. Returned to mathematics research at 62 after a 45-year break. Discovered FormulaDigits2 by combining life experience with mathematical intuition. Proving that "age is not a limitation but rather a strength."</p>
+                
+                <div style="margin-top: 30px;">
+                    <h4>Research Philosophy</h4>
+                    <p style="font-style: italic; color: #142850;">
+                        "Mathematics is eternally young. No matter your age, the joy of new discoveries remains unchanged."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advisors Section -->
+        <section class="advisors-section">
+            <h2 style="text-align: center; color: #142850; margin-bottom: 20px;">Advisors & Collaborators</h2>
+            
+            <div class="advisor-grid">
+                <div class="advisor-card">
+                    <h3>Edwin Moise</h3>
+                    <p>Former Mentor</p>
+                    <p>Known as an authority in topology, he trained many mathematicians. He taught me the importance of fundamental mathematical thinking.</p>
+                </div>
+                <div class="advisor-card">
+                    <h3>Carl Pomerance</h3>
+                    <p>Number Theory Researcher</p>
+                    <p>Leading expert on the Erdős-Straus conjecture. He provides valuable advice on research direction.</p>
+                </div>
+                <div class="advisor-card">
+                    <h3>Future Partners</h3>
+                    <p>Would you like to join?</p>
+                    <p>We're looking for young entrepreneurs, engineers, and researchers. Let's create the future of mathematics together.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <h2 style="text-align: center; color: #142850; margin-bottom: 20px;">Our Values</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>Innovation</h3>
+                    <p>Always exploring new approaches without being bound by convention</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔬</div>
+                    <h3>Rigor</h3>
+                    <p>Emphasizing mathematical accuracy and scientific verification</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌟</div>
+                    <h3>Passion</h3>
+                    <p>Pursuing the joy of discovery regardless of age</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤲</div>
+                    <h3>Sharing</h3>
+                    <p>Knowledge as common heritage of humanity</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Join Us in Making History</h2>
+            <p>We welcome participation in various forms including research collaboration, business partnerships, and investment</p>
+            <div style="margin-top: 30px;">
+                <a href="contact.html" class="btn btn-white">Contact Us</a>
+                <a href="technology.html" class="btn btn-white">Technical Details</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #2c3e50; color: white; text-align: center; padding: 40px 20px; margin-top: 60px;">
+        <p>&copy; 2024 Estrypt Project. All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Age is not a barrier. It's a limitation you put on your mind.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
