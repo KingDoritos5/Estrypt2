@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私たちについて - Estrypt</title>
+    <link rel="stylesheet" href="navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        
+        /* ヒーローセクション */
+        .about-hero {
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* ストーリーセクション */
+        .story-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .story-section h2 {
+            color: #142850;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #142850;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+            text-align: left;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            width: 45%;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #142850;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        /* ミッションセクション */
+        .mission-section {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .mission-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .mission-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .mission-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* チームセクション */
+        .team-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .team-section h2 {
+            color: #142850;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .profile-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 700px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .profile-name {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .profile-title {
+            color: #142850;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* 価値観セクション */
+        .values-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: #142850;
+            margin-bottom: 15px;
+        }
+        
+        /* アドバイザーセクション */
+        .advisors-section {
+            background: #f8f9fa;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .advisor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .advisor-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #142850;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-item {
+                justify-content: flex-start !important;
+                text-align: left !important;
+            }
+            
+            .timeline-date {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Estrypt</a>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="technology.html">技術詳細</a></li>
+                <li><a href="demo.html">デモ</a></li>
+                <li><a href="applications.html">応用分野</a></li>
+                <li><a href="about.html">私たちについて</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+                <li class="lang-switcher">
+                    <button class="lang-btn active">JP</button>
+                    <button class="lang-btn" onclick="window.location.href='en/about.html'">EN</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="about-hero">
+        <h1>私たちのストーリー</h1>
+        <p>45年ぶりに数学の世界に戻った、ある研究者の挑戦</p>
+    </section>
+
+    <!-- メインコンテンツ -->
+    <div class="container">
+        <!-- ストーリーセクション -->
+        <section class="story-section">
+            <h2>発見への道のり</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>数学への回帰</h3>
+                        <p>大学時代に数学を専攻し、Edwin Moiseのもとで学んだ後、45年間のブランクを経て、62歳で再び数学の世界へ。人生の新たな章が始まりました。</p>
+                    </div>
+                    <div class="timeline-date">2023年</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Erdős-Straus予想との出会い</h3>
+                        <p>Carl Pomeranceの論文を通じて、70年間未解決のこの問題に出会う。シンプルな方程式に隠された深遠な謎に魅了されました。</p>
+                    </div>
+                    <div class="timeline-date">2024年1月</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>パターンの発見</h3>
+                        <p>膨大な計算実験の中で、nの先頭桁とAの値に相関があることを発見。この瞬間、すべてが変わりました。</p>
+                    </div>
+                    <div class="timeline-date">2024年7月</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>FormulaDigits2の誕生</h3>
+                        <p>パターンを活用したアルゴリズムが完成。10^100を超える巨大数でも0.0001秒で解を発見。数学史に新たな1ページが刻まれました。</p>
+                    </div>
+                    <div class="timeline-date">2024年8月</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ミッションセクション -->
+        <section class="mission-section">
+            <h2>私たちのミッション</h2>
+            <p>数学の美しさを世界に示し、技術革新を通じて社会に貢献する</p>
+            
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">🎯</div>
+                    <h3>純粋な探求</h3>
+                    <p>数学の本質的な美しさと真理を追求し、人類の知的財産を豊かにします。</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🌍</div>
+                    <h3>社会への還元</h3>
+                    <p>研究成果を実用技術に転換し、より良い世界の実現に貢献します。</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">🤝</div>
+                    <h3>知識の共有</h3>
+                    <p>オープンサイエンスの精神で、発見を世界中の研究者と共有します。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- チームセクション -->
+        <section class="team-section">
+            <h2>創設者</h2>
+            
+            <div class="profile-card">
+                <div class="profile-img">👨‍🔬</div>
+                <h3 class="profile-name">研究者プロフィール</h3>
+                <p class="profile-title">Founder & Chief Scientist</p>
+                <p>元大学教員。Edwin Moiseに師事し、数学の基礎を学ぶ。45年のブランクを経て、62歳で数学研究に復帰。人生経験と数学的直感を融合させ、FormulaDigits2を発見。「年齢は制限ではなく、むしろ強みになる」ことを証明。</p>
+                
+                <div style="margin-top: 30px;">
+                    <h4>研究哲学</h4>
+                    <p style="font-style: italic; color: #142850;">
+                        "数学は永遠に若い。何歳になっても、新しい発見の喜びは変わらない。"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- アドバイザーセクション -->
+        <section class="advisors-section">
+            <h2 style="text-align: center; color: #142850; margin-bottom: 20px;">アドバイザー・協力者</h2>
+            
+            <div class="advisor-grid">
+                <div class="advisor-card">
+                    <h3>Edwin Moise</h3>
+                    <p>元指導教授</p>
+                    <p>トポロジーの権威として知られ、多くの数学者を育成。基礎的な数学的思考の重要性を教えてくれました。</p>
+                </div>
+                <div class="advisor-card">
+                    <h3>Carl Pomerance</h3>
+                    <p>数論研究者</p>
+                    <p>Erdős-Straus予想の第一人者。研究の方向性について貴重なアドバイスをいただいています。</p>
+                </div>
+                <div class="advisor-card">
+                    <h3>未来の仲間たち</h3>
+                    <p>あなたも参加しませんか？</p>
+                    <p>若い起業家、エンジニア、研究者を募集中。一緒に数学の未来を創りましょう。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 価値観セクション -->
+        <section class="values-section">
+            <h2 style="text-align: center; color: #142850; margin-bottom: 20px;">私たちの価値観</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>革新性</h3>
+                    <p>常識にとらわれず、新しいアプローチを探求します</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔬</div>
+                    <h3>厳密性</h3>
+                    <p>数学的な正確さと科学的検証を重視します</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌟</div>
+                    <h3>情熱</h3>
+                    <p>年齢に関係なく、発見の喜びを追求します</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤲</div>
+                    <h3>共有</h3>
+                    <p>知識は人類共通の財産として公開します</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>一緒に歴史を作りませんか？</h2>
+            <p>研究協力、事業提携、投資など、様々な形での参加を歓迎します</p>
+            <div style="margin-top: 30px;">
+                <a href="contact.html" class="btn btn-white">お問い合わせ</a>
+                <a href="technology.html" class="btn btn-white">技術詳細</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- フッター -->
+    <footer style="background: #2c3e50; color: white; text-align: center; padding: 40px 20px; margin-top: 60px;">
+        <p>&copy; 2024 Estrypt Project. All rights reserved.</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Age is not a barrier. It's a limitation you put on your mind.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

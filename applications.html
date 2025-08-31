@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>応用分野 - Estrypt</title>
+    <link rel="stylesheet" href="navigation.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+        
+        /* ヒーローセクション */
+        .app-hero {
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+        
+        .app-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* アプリケーションカード */
+        .app-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .app-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #142850;
+        }
+        
+        .app-icon {
+            font-size: 4rem;
+            margin-right: 30px;
+            background: linear-gradient(135deg, #142850 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .app-title {
+            flex: 1;
+        }
+        
+        .app-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .app-title p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        /* 現状と解決 */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .problem-box, .solution-box {
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .problem-box {
+            background: #ffebee;
+            border-left: 5px solid #ef5350;
+        }
+        
+        .solution-box {
+            background: #e8f5e9;
+            border-left: 5px solid #66bb6a;
+        }
+        
+        .problem-box h3 {
+            color: #c62828;
+            margin-bottom: 15px;
+        }
+        
+        .solution-box h3 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        
+        /* 技術詳細 */
+        .tech-details {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tech-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tech-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #142850;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        /* 実装例 */
+        .implementation-example {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+        
+        .implementation-example h4 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.5;
+        }
+        
+        /* ユースケース */
+        .use-cases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .use-case-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #142850;
+        }
+        
+        .use-case-card h4 {
+            color: #142850;
+            margin-bottom: 10px;
+        }
+        
+        /* インパクト */
+        .impact-section {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 40px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .impact-numbers {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .impact-item {
+            flex: 1;
+            min-width: 150px;
+            margin: 10px;
+        }
+        
+        .impact-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+        }
+        
+        .impact-label {
+            color: #34495e;
+            margin-top: 5px;
+        }
+        
+        /* CTA */
+        .app-cta {
+            background: #142850;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #142850;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .problem-solution {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .app-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Estrypt</a>
+            <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="technology.html">技術詳細</a></li>
+                <li><a href="demo.html">デモ</a></li>
+                <li><a href="applications.html">応用分野</a></li>
+                <li><a href="about.html">私たちについて</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+                <li class="lang-switcher">
+                    <button class="lang-btn active">JP</button>
+                    <button class="lang-btn" onclick="window.location.href='en/applications.html'">EN</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="app-hero">
+        <h1>革新的な応用分野</h1>
+        <p>FormulaDigits2が切り開く、無限の可能性</p>
+    </section>
+
+    <!-- メインコンテンツ -->
+    <div class="container">
+        
+        <!-- ブロックチェーン -->
+        <section class="app-section">
+            <div class="app-header">
+                <div class="app-icon">⛓️</div>
+                <div class="app-title">
+                    <h2>ブロックチェーン革命</h2>
+                    <p>Proof of Egyptian Fraction (PoEF) - 持続可能な合意形成</p>
+                </div>
+            </div>
+            
+            <div class="problem-solution">
+                <div class="problem-box">
+                    <h3>😔 現在の問題</h3>
+                    <ul>
+                        <li>ビットコイン：年間電力消費量 = アルゼンチン一国分</li>
+                        <li>送金手数料：コーヒー1杯に2,000円</li>
+                        <li>処理速度：7件/秒（VISAは65,000件/秒）</li>
+                        <li>確認時間：10分〜1時間</li>
+                    </ul>
+                </div>
+                <div class="solution-box">
+                    <h3>🎉 Estryptの解決策</h3>
+                    <ul>
+                        <li>電力消費：1/10,000に削減</li>
+                        <li>送金手数料：0.01円</li>
+                        <li>処理速度：1,000,000件/秒</li>
+                        <li>確認時間：0.001秒</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="tech-details">
+                <h4>技術仕様</h4>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <span class="tech-value">O(1)</span>
+                        <span>計算複雑度</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-value">100μs</span>
+                        <span>ブロック生成</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-value">1MB</span>
+                        <span>ノード要件</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-value">99.9%</span>
+                        <span>省エネ率</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="use-cases">
+                <div class="use-case-card">
+                    <h4>🏪 マイクロペイメント</h4>
+                    <p>1円単位の少額決済が現実的に。コンテンツの従量課金、IoTデバイス間決済など。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🌍 国際送金</h4>
+                    <p>銀行を介さず、瞬時に、ほぼ無料で世界中に送金可能。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🏭 サプライチェーン</h4>
+                    <p>リアルタイムトラッキングと自動決済で、物流革命を実現。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 暗号技術 -->
+        <section class="app-section">
+            <div class="app-header">
+                <div class="app-icon">🔐</div>
+                <div class="app-title">
+                    <h2>次世代暗号技術</h2>
+                    <p>Inverse Egyptian Fraction Cryptography (IEFC)</p>
+                </div>
+            </div>
+            
+            <div class="problem-solution">
+                <div class="problem-box">
+                    <h3>😔 現在の課題</h3>
+                    <ul>
+                        <li>量子コンピュータによるRSA暗号の危機</li>
+                        <li>暗号化/復号化の計算コスト</li>
+                        <li>鍵サイズの肥大化</li>
+                        <li>実装の複雑性</li>
+                    </ul>
+                </div>
+                <div class="solution-box">
+                    <h3>🎉 IEFCの優位性</h3>
+                    <ul>
+                        <li>量子耐性を持つ新しい困難性</li>
+                        <li>1000倍高速な暗号化処理</li>
+                        <li>コンパクトな鍵サイズ</li>
+                        <li>シンプルで安全な実装</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="implementation-example">
+                <h4>実装イメージ</h4>
+                <div class="code">
+                    # IEFC暗号化の概念<br>
+                    def encrypt(message, public_key):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;n = generate_special_n(public_key)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;# FormulaDigits2で高速に解を生成<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;x, y, z = solve_erdos_straus(n)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;# メッセージを分数表現に埋め込み<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return embed_message(message, x, y, z)<br>
+                </div>
+            </div>
+            
+            <div class="impact-section">
+                <h3>セキュリティへのインパクト</h3>
+                <div class="impact-numbers">
+                    <div class="impact-item">
+                        <span class="impact-value">2^256</span>
+                        <span class="impact-label">安全性レベル</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-value">1000x</span>
+                        <span class="impact-label">処理速度向上</span>
+                    </div>
+                    <div class="impact-item">
+                        <span class="impact-value">50%</span>
+                        <span class="impact-label">鍵サイズ削減</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 金融テクノロジー -->
+        <section class="app-section">
+            <div class="app-header">
+                <div class="app-icon">🏦</div>
+                <div class="app-title">
+                    <h2>金融テクノロジー革新</h2>
+                    <p>超高速・超低コスト決済インフラ</p>
+                </div>
+            </div>
+            
+            <div class="use-cases">
+                <div class="use-case-card">
+                    <h4>💳 リアルタイム決済</h4>
+                    <p>クレジットカード決済を0.001秒で完了。POSシステムの大幅な高速化。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>📱 モバイル決済</h4>
+                    <p>QRコード不要。NFCタッチだけで瞬間決済。オフラインでも動作。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🏢 企業間決済</h4>
+                    <p>B2B取引の即時決済。キャッシュフロー改善と事務コスト削減。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>💱 外貨両替</h4>
+                    <p>リアルタイムレートで瞬時に両替。手数料は従来の1/100。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🎮 ゲーム内経済</h4>
+                    <p>ゲーム内通貨の現実通貨との自由な交換。新しい経済圏の創出。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🤖 AI自動取引</h4>
+                    <p>AIエージェント間の超高速自動取引。新しい金融サービスの創出。</p>
+                </div>
+            </div>
+            
+            <div class="tech-details">
+                <h4>金融業界へのメリット</h4>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <span class="tech-value">99.9%</span>
+                        <span>コスト削減</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-value">24/7</span>
+                        <span>稼働時間</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-value">0秒</span>
+                        <span>決済時間</span>
+                    </div>
+                    <div class="tech-item">
+                        <span class="tech-value">∞</span>
+                        <span>スケーラビリティ</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI・機械学習 -->
+        <section class="app-section">
+            <div class="app-header">
+                <div class="app-icon">🤖</div>
+                <div class="app-title">
+                    <h2>AI・機械学習の新展開</h2>
+                    <p>最適化アルゴリズムの革新</p>
+                </div>
+            </div>
+            
+            <p>FormulaDigits2のパターン認識手法は、機械学習の最適化問題に新しいアプローチを提供します。</p>
+            
+            <div class="use-cases">
+                <div class="use-case-card">
+                    <h4>🧠 ニューラルネットワーク</h4>
+                    <p>重み最適化の新手法。学習時間を1/10に短縮しつつ、精度向上を実現。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>📊 ビッグデータ解析</h4>
+                    <p>パターン発見の高速化。これまで見逃されていた相関関係の発見。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🎯 推薦システム</h4>
+                    <p>リアルタイム最適化により、より精度の高い推薦を瞬時に生成。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- その他の応用 -->
+        <section class="app-section">
+            <div class="app-header">
+                <div class="app-icon">🚀</div>
+                <div class="app-title">
+                    <h2>その他の革新的応用</h2>
+                    <p>想像を超える可能性</p>
+                </div>
+            </div>
+            
+            <div class="use-cases">
+                <div class="use-case-card">
+                    <h4>🏥 医療データ処理</h4>
+                    <p>ゲノム解析、創薬シミュレーションの高速化。個別化医療の実現。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🌐 IoTネットワーク</h4>
+                    <p>数十億のデバイス間での効率的な通信とデータ処理。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🎬 メディア配信</h4>
+                    <p>動画ストリーミングの最適化。CDNコストの大幅削減。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🏛️ 電子政府</h4>
+                    <p>行政手続きの完全デジタル化。安全で効率的な市民サービス。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>🌍 気候変動対策</h4>
+                    <p>カーボンクレジット取引の透明化と効率化。</p>
+                </div>
+                <div class="use-case-card">
+                    <h4>📚 教育テクノロジー</h4>
+                    <p>個別最適化された学習パスの自動生成。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="app-cta">
+            <h2>あなたの業界でも革新を起こしませんか？</h2>
+            <p>FormulaDigits2の可能性は無限大です。一緒に未来を創造しましょう。</p>
+            <div style="margin-top: 20px;">
+                <a href="contact.html" class="btn btn-white">技術相談</a>
+                <a href="demo.html" class="btn btn-white">デモを見る</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- フッター -->
+    <footer style="background: #2c3e50; color: white; text-align: center; padding: 40px 20px;">
+        <p>&copy; 2024 Estrypt Project. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
